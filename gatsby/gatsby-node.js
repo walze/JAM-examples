@@ -1,11 +1,10 @@
-const axios = require('axios');
-const crypto = require('crypto');
+const fetch = require('isomorphic-unfetch');
 const path = require(`path`)
 
 exports.createPages = async ({ actions }) => {
   const { createPage } = actions
 
-  const todos = await axios.get('https://jsonplaceholder.typicode.com/todos').then(({ data }) => data)
+  const todos = await fetch('https://jsonplaceholder.typicode.com/todos').then(res => res.json())
   const todoTemplate = path.resolve(`./src/templates/todoTemplate.tsx`)
 
 
@@ -25,9 +24,8 @@ exports.sourceNodes = async ({ actions }) => {
   const { createNode } = actions;
 
   // fetch raw data from the api
-  const todos = await axios
-    .get(`https://jsonplaceholder.typicode.com/todos`)
-    .then(res => res.data);
+  const todos = await fetch(`https://jsonplaceholder.typicode.com/todos`)
+    .then(res => res.json());
 
   // map into these results and create nodes
   todos
