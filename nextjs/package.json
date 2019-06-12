@@ -1,0 +1,33 @@
+{
+  "name": "gatsby-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "next ./src --port 3001",
+    "build": "next build ./src",
+    "start": "next start ./src",
+    "export": "next export ./src",
+    "serve": "cd ./src/out/ && serve -p 8088",
+    "build:sim": "npm run build && npm run export && npm run serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@zeit/next-sass": "^1.0.1",
+    "@zeit/next-typescript": "^1.1.1",
+    "axios": "^0.19.0",
+    "express": "^4.17.1",
+    "next": "^8.1.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "serve": "^11.0.1"
+  },
+  "devDependencies": {
+    "@types/next": "^8.0.5",
+    "@types/react": "^16.8.19",
+    "isomorphic-unfetch": "^3.0.0"
+  }
+}
