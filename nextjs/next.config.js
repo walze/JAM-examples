@@ -24,17 +24,20 @@ module.exports = withPlugins({
 
     // tranform the list of posts into a map of pages with the pathname `/post/:id`
     const todos = todosList.reduce(
-      (pages, post) =>
-        Object.assign({}, pages, {
-          [`/todo/${post.id}`]: {
+      (pages, todo) => {
+        const newPage = {
+          [`/todo/${todo.id}`]: {
             page: '/todo',
-            query: { id: post.id }
+            query: {
+              id: todo.id
+            }
           }
-        }),
+        }
+
+        return { ...pages, ...newPage }
+      },
       {}
     )
-
-    console.log(todos)
 
     // combine the map of post pages with the home
     return {

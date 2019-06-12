@@ -7,9 +7,9 @@
     "dev": "next ./src --port 3001",
     "build": "next build ./src",
     "start": "next start ./src",
-    "export": "next export ./src",
+    "export": "npm run build && next export ./src",
     "serve": "cd ./src/out/ && serve -p 8088",
-    "build:sim": "npm run build && npm run export && npm run serve"
+    "build:sim": "npm run export && npm run serve"
   },
   "keywords": [],
   "author": "",
