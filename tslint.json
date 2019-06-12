@@ -1,0 +1,18 @@
+{
+    "linterOptions": {
+        "exclude": [
+            "./gatsby/node_modules/",
+            "./nextjs/node_modules/"
+        ]
+    },
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {},
+    "rulesDirectory": [
+        "./gatsby/",
+        "./nextjs/"
+    ]
+}

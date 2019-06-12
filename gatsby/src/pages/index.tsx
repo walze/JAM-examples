@@ -6,26 +6,25 @@ import { Todo, ITodo } from "../components/Todo";
 
 const IndexPage: FunctionComponent = () => {
   const query = graphql`
-  query allTodosQuery {
-    allTodos {
-      edges {
-        node {
-          todo {
-            completed
-            id
-            title
-            userId
+    query allTodosQuery {
+      allTodos {
+        edges {
+          node {
+            todo {
+              completed
+              id
+              title
+              userId
+            }
           }
         }
       }
     }
-  }
-`
+  `
 
   const { allTodos: allTodosQuery } = useStaticQuery(query)
-
-
   const todos: ITodo[] = allTodosQuery.edges.map(({ node }: any) => node.todo)
+
   const todoNodes = todos.map((todo, i) => <Todo key={i} data={todo} />)
 
   return (
