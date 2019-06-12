@@ -20,12 +20,10 @@ export const Todo = (props: { data: ITodo }) => {
   return (
     <div className="todo">
       <a href={`/todo/${id}`}>
-        <a>
-          <div> id - {id} </div>
-          <div> title - {title} </div>
-          <div> userId - {userId} </div>
-          <div> completed - {JSON.stringify(completed)} </div>
-        </a>
+        <div> id - {id} </div>
+        <div> title - {title} </div>
+        <div> userId - {userId} </div>
+        <div> completed - {JSON.stringify(completed)} </div>
       </a>
 
       <br />

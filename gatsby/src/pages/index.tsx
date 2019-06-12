@@ -1,21 +1,43 @@
-import React from "react"
-import { Link } from "gatsby"
+import React, { FunctionComponent } from "react"
+import { useStaticQuery, graphql } from "gatsby"
 
-import Layout from "../components/layout"
-import Image from "../components/image"
-import SEO from "../components/seo"
+import { Layout } from "../components/Layout"
+import { Todo, ITodo } from "../components/Todo";
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}>
-      <Image />
-    </div>
-    <Link to="/page-2/">Go to page 2</Link>
-  </Layout>
-)
+const IndexPage: FunctionComponent = () => {
+
+  const { allTodos: allTodosQuery } = useStaticQuery(graphql`
+    query allTodosQuery {
+      allTodos {
+        edges {
+          node {
+            todo {
+              completed
+              id
+              title
+              userId
+            }
+          }
+        }
+      }
+    }
+  `)
+
+
+  const todos: ITodo[] = allTodosQuery.edges.map(({ node }: any) => node.todo)
+  const todoNodes = todos.map((todo, i) => <Todo key={i} data={todo} />)
+
+  return (
+    <Layout>
+      <h2>
+        Todos
+      </h2>
+
+      <div className="todos">
+        {todoNodes}
+      </div>
+    </Layout>
+  )
+}
 
 export default IndexPage
