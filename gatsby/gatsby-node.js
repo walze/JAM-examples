@@ -21,13 +21,11 @@ exports.createPages = async ({ actions }) => {
 }
 
 
-exports.sourceNodes = async ({ boundActionCreators }) => {
-  const { createNode } = boundActionCreators;
+exports.sourceNodes = async ({ actions }) => {
+  const { createNode } = actions;
 
-  // fetch raw data from the randomuser api
-  const fetchRandomUser = () => axios.get(`https://jsonplaceholder.typicode.com/todos`);
-  // await for results
-  const res = await fetchRandomUser();
+  // fetch raw data from the api
+  const res = await axios.get(`https://jsonplaceholder.typicode.com/todos`);
 
   // map into these results and create nodes
   res.data.map((todo, i) => {

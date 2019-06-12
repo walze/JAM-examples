@@ -5,23 +5,24 @@ import { Layout } from "../components/Layout"
 import { Todo, ITodo } from "../components/Todo";
 
 const IndexPage: FunctionComponent = () => {
-
-  const { allTodos: allTodosQuery } = useStaticQuery(graphql`
-    query allTodosQuery {
-      allTodos {
-        edges {
-          node {
-            todo {
-              completed
-              id
-              title
-              userId
-            }
+  const query = graphql`
+  query allTodosQuery {
+    allTodos {
+      edges {
+        node {
+          todo {
+            completed
+            id
+            title
+            userId
           }
         }
       }
     }
-  `)
+  }
+`
+
+  const { allTodos: allTodosQuery } = useStaticQuery(query)
 
 
   const todos: ITodo[] = allTodosQuery.edges.map(({ node }: any) => node.todo)
