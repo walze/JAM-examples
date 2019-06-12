@@ -9,7 +9,9 @@ exports.createPages = async ({ actions }) => {
   const todoTemplate = path.resolve(`./src/templates/todoTemplate.tsx`)
 
 
-  return todos.map((_, id) => {
+  return todos.map((_, i) => {
+    const id = i + 1
+
     createPage({
       path: `/todo/${id}`,
       component: todoTemplate,
